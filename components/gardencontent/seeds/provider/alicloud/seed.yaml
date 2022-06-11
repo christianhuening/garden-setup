@@ -12,11 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-apiVersion: v1
-kind: Secret
-metadata:
-  name: garden-kube-apiserver-basic-auth
-  namespace: {{ .Release.Namespace }}
-type: Opaque
-data:
-  basic_auth.csv: {{ printf "%s,admin,admin,system:masters" .Values.tls.kubeAPIServer.basicAuthPassword | b64enc }}
+blockCIDRs:
+- 169.254.169.254/32
+- 100.100.100.200/32
